@@ -94,19 +94,14 @@ void MainWindow::updateVisualPicture()
 void MainWindow::on_tabWidget_currentChanged(int index)
 {
     switch (index) {
-    case 0:
-        /* Visual */
+    case 0: // Visual
         updateVisualPicture();
         break;
-    case 1:
-        /* Applied */
+    case 1: // Applied
         break;
-    case 2:
-        /* Interactive */
+    case 2: // Interactive
         break;
-    case 3:
-        /* Text */
-
+    case 3: // Text
         break;
 //    default:
 //        /* XXX throw error */

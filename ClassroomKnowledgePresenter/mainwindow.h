@@ -33,11 +33,8 @@ private:
     QString BASE;
     QString IMAGE_BASE;
     void updateVisualPicture();
-
     void setUpTextTab();
     void setUpVisualTab();
-
-
 
 private slots:
     void on_treeWidget_itemClicked(QTreeWidgetItem* item, int column);
