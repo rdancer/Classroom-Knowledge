@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>619</width>
+    <height>427</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>eLearning - Classroom Knowledge Presenter</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <widget class="QTreeWidget" name="treeWidget">
+      <property name="minimumSize">
+       <size>
+        <width>193</width>
+        <height>0</height>
+       </size>
+      </property>
+      <column>
+       <property name="text">
+        <string>Human brain</string>
+       </property>
+      </column>
+      <item>
+       <property name="text">
+        <string>Structure</string>
+       </property>
+       <item>
+        <property name="text">
+         <string>General features</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Cortical divisions</string>
+        </property>
+        <item>
+         <property name="text">
+          <string>Four lobes</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Functional divisions</string>
+         </property>
+        </item>
+       </item>
+       <item>
+        <property name="text">
+         <string>Topography</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Lateralization</string>
+        </property>
+       </item>
+      </item>
+      <item>
+       <property name="text">
+        <string>Development</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Sources of information</string>
+       </property>
+       <item>
+        <property name="text">
+         <string>EEG</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>MEG</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Structural and functional imaging</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Effects of brain damage</string>
+        </property>
+       </item>
+      </item>
+      <item>
+       <property name="text">
+        <string>Language</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Pathology</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Metabolism</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>See also</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+    <item>
+     <widget class="QTabWidget" name="tabWidget">
+      <property name="currentIndex">
+       <number>2</number>
+      </property>
+      <widget class="QWidget" name="tab">
+       <attribute name="title">
+        <string>Visual</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_3">
+        <item>
+         <layout class="QGridLayout" name="gridLayout_2">
+          <item row="0" column="0">
+           <spacer name="horizontalSpacer">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>198</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="0" column="1">
+           <widget class="QPushButton" name="visualPanePrevious">
+            <property name="text">
+             <string>&lt;&lt; &amp;Previous</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="2">
+           <widget class="QPushButton" name="visualPaneNext">
+            <property name="text">
+             <string>&amp;Next &gt;&gt;</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0" colspan="3">
+           <widget class="QLabel" name="visualPicture">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_2">
+       <attribute name="title">
+        <string>Interactive</string>
+       </attribute>
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <item>
+         <widget class="QScrollArea" name="scrollArea">
+          <property name="widgetResizable">
+           <bool>true</bool>
+          </property>
+          <widget class="QWidget" name="scrollAreaWidgetContents">
+           <property name="geometry">
+            <rect>
+             <x>0</x>
+             <y>0</y>
+             <width>357</width>
+             <height>323</height>
+            </rect>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_2">
+            <item>
+             <layout class="QVBoxLayout" name="verticalLayout">
+              <item>
+               <widget class="QLabel" name="question1">
+                <property name="text">
+                 <string>1. Which lobe is responsible for conscious thought?</string>
+                </property>
+                <property name="wordWrap">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QRadioButton" name="question1Answer1">
+                <property name="text">
+                 <string>Frontal</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QRadioButton" name="question1Answer2">
+                <property name="text">
+                 <string>Temporal</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QRadioButton" name="question1Answer3">
+                <property name="text">
+                 <string>Parietal</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QRadioButton" name="question1Answer4">
+                <property name="text">
+                 <string>Occipital</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="question2">
+                <property name="text">
+                 <string>2. Which Brodmann area number denotes the primary somatosensory cortex?</string>
+                </property>
+                <property name="wordWrap">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QSpinBox" name="question2Answer"/>
+              </item>
+              <item>
+               <widget class="QLabel" name="question3">
+                <property name="text">
+                 <string>3. What does EEG stand for?</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLineEdit" name="question3Answer"/>
+              </item>
+              <item>
+               <spacer name="verticalSpacer">
+                <property name="orientation">
+                 <enum>Qt::Vertical</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>20</width>
+                  <height>40</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_4">
+       <attribute name="title">
+        <string>Text</string>
+       </attribute>
+       <layout class="QHBoxLayout" name="horizontalLayout_3">
+        <item>
+         <widget class="QWebView" name="webView">
+          <property name="url">
+           <url>
+            <string>about:blank</string>
+           </url>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_3">
+       <attribute name="title">
+        <string>Applied</string>
+       </attribute>
+       <layout class="QHBoxLayout" name="horizontalLayout_4">
+        <item>
+         <widget class="QLabel" name="label">
+          <property name="text">
+           <string>&lt;h1&gt;To be implemented&lt;/h1&gt;</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>619</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionQuit"/>
+   </widget>
+   <addaction name="menuFile"/>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionQuit">
+   <property name="text">
+    <string>Quit</string>
+   </property>
+  </action>
+  <action name="actionVisual">
+   <property name="text">
+    <string>Visual</string>
+   </property>
+  </action>
+  <action name="actionApplied">
+   <property name="text">
+    <string>Applied</string>
+   </property>
+  </action>
+  <action name="actionInteractive">
+   <property name="text">
+    <string>Interactive</string>
+   </property>
+  </action>
+  <action name="actionText">
+   <property name="text">
+    <string>Text</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>QWebView</class>
+   <extends>QWidget</extends>
+   <header>QtWebKit/QWebView</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>
