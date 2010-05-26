@@ -6342,6 +6342,17 @@ height="31" width="88"></a></li>
 		<!-- /fixalpha -->
 		
 <script type="text/javascript">if (window.runOnloadHook) runOnloadHook();</script>
+<script type="text/javascript">
+    // Emulate fragments (because Qt can't do fragments with the "file" scheme
+    
+var s = /FRAGMENT_(.*)_FRAGMENT/.exec(document.location);
+if (s[1]) {
+    fragment = s[1];
+    //alert(fragment);
+    document.location += "#" + fragment;
+}
+
+</script>
 		<!-- Served by srv94 in 0.132 secs. -->			<div class="suggestions" 
 style="top: 0px; left: 0px; width: 0px; display: none;"><div 
 class="suggestions-results"></div><div class="suggestions-special"></div></div></body></html>
