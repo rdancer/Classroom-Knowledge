@@ -15,3 +15,47 @@ Shared/
 README
 
 # TODO Put other generated files here…
+
+#
+# Add <http://stackoverflow.com/questions/2815553/what-gitignore-i-should-use-with-qt-projects-qt-creator> (by "Envek")
+#
+########### BEGIN
+
+# Compiled object files
+*.o
+
+# Generated MOC, resource and UI files
+moc_*.cpp
+qrc_*.cpp
+ui_*.h
+
+# Debug and Release directories (created under Windows, not Linux)
+Debug/
+Release/
+
+# .log files (usually created by QtTest - thanks to VestniK)
+*.log
+
+# Built windows .exe and linux binaries
+# NOTE: PROJECT is a your project's name, analog of PROJECT.exe in Linux
+*.exe
+*.dll
+PROJECT
+
+# Windows-specific files
+Thumbs.db
+desktop.ini
+# Mac-specific things (thanks to Michael Aaron Safyan)
+.DS_Store
+
+# Editors temporary files 
+*~
+
+########### END
+
+#
+# Other suggestions from the above page
+#
+*.pro.user
+Makefile.*
+Makefile
