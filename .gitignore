@@ -1,0 +1,16 @@
+# .gitignore -- files to be ignored by git(1)
+
+# Vim swap files
+.*.sw?
+
+# Generated files
+*.o
+*.zip
+*.exe
+
+
+# Miscelaneous files 
+Chris\ Willcox
+Shared/
+
+# TODO Put other generated files here…

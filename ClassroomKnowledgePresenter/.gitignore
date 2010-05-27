@@ -1,0 +1,8 @@
+# .gitignore -- files to be ignored by git(1)
+
+# Generated files
+
+Makefile
+moc_mainwindow.cpp
+qrc_classroomknowledgepresenter.cpp
+ui_mainwindow.h
