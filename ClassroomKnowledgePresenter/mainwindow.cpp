@@ -16,7 +16,7 @@ MainWindow::MainWindow(QWidget *parent) :
      * TODO: Use a XML-backed content
      */
 
-    BASE = "qrc:/data/Wikipedia/";
+    BASE = ":/data/Wikipedia/";
     IMAGE_BASE = ":/data/Wikipedia/visualPane/";
 
     setUpTextTab();
@@ -25,7 +25,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
 void MainWindow::setUpTextTab()
 {
-    ui->webView->load(QUrl(BASE + "Human_brain-text_only.html"));
+    ui->webView->load(QUrl("qrc" + BASE + "Human_brain-text_only.html"));
 }
 
 void MainWindow::setUpVisualTab()
@@ -82,7 +82,7 @@ void MainWindow::resizeEvent(QResizeEvent * /* event */)
 /* Same source as MainWindow::resizeEvent(QResizeEvent *) */
 void MainWindow::updateVisualPicture()
 {
-    ui->visualPicture->setPixmap(originalPixmap.scaled(ui->visualPicture->size(),
+    ui->visualPicture->setPixmap(QPixmap::fromImage(originalImage).scaled(ui->visualPicture->size(),
                                                      Qt::KeepAspectRatio,
                                                      Qt::SmoothTransformation));
 }
@@ -113,7 +113,7 @@ void MainWindow::on_tabWidget_currentChanged(int index)
 void MainWindow::on_visualPaneNext_clicked()
 {
     if (visualPicturesIndex + 1 < visualPictures.size()) {
-        originalPixmap.load(visualPictures[++visualPicturesIndex]);
+        originalImage.load(visualPictures[++visualPicturesIndex]);
 //        ui->visualPicture->setPixmap(myPixmap);
         updateVisualPicture();
     }
@@ -122,11 +122,12 @@ void MainWindow::on_visualPaneNext_clicked()
 void MainWindow::on_visualPanePrevious_clicked()
 {
     if (visualPicturesIndex > 0) {
-        originalPixmap.load(visualPictures[--visualPicturesIndex]);
+        originalImage.load(visualPictures[--visualPicturesIndex]);
 //        ui->visualPicture->setPixmap(myPixmap);
         updateVisualPicture();
     }
 }
+
 
 void MainWindow::on_question1Answer1_toggled(bool checked)
 {
@@ -143,6 +144,8 @@ void MainWindow::on_question1Answer1_toggled(bool checked)
 // Low-priority to-do: get rid of it
 void MainWindow::on_spinBox_editingFinished(){}
 
+
+# if 0
 void MainWindow::on_question2Answer_editingFinished()
 {
     const int CORRECT_ANSWER = 1;
@@ -153,6 +156,48 @@ void MainWindow::on_question2Answer_editingFinished()
 
     ui->question2->setText(questionText[ui->question2Answer->value() == CORRECT_ANSWER ? 1 : 0]);
 }
+#else /* 0 */
+void MainWindow::on_question2Answer_editingFinished()
+{
+    int correctAnswer;
+    QMultiMap<QString, QString> questionText;
+
+  /* Adapted from <http://doc.trolltech.com/4.6/qdomdocument.html#details> */
+
+  /* Init the XML engine */
+    QDomDocument doc("mydocument");
+    QFile file(BASE + "Human_brain-text_only.html");
+    if (!file.open(QIODevice::ReadOnly))
+        return;
+    if (!doc.setContent(&file)) {
+        file.close();
+        return;
+    }
+    file.close();
+
+    /* Locate the <question> tag */
+    QDomNode docElem = doc.elementsByTagName("question").at(0);
+
+    QDomNode n = docElem.firstChild();
+    while(!n.isNull()) {
+        QDomElement e = n.toElement(); // try to convert the node to an element.
+        if(!e.isNull()) {
+            /* get the <correctAnswer> */
+            if (e.tagName() == "correctAnswer") {
+                correctAnswer = e.text().toInt();
+            } else if (e.tagName() == "questionText") {
+                questionText.insert(e.attribute("display"), e.text());
+            } else if (e.tagName() == "input") {
+                // TODO draw the input
+            }
+        }
+        n = n.nextSibling();
+    }
+
+    /* draw the <questionText>s */
+    ui->question2->setText(questionText.value(ui->question2Answer->value() == correctAnswer ? "success" : "default"));
+}
+#endif /* 0 */
 
 void MainWindow::on_question3Answer_editingFinished()
 {
@@ -181,7 +226,7 @@ void MainWindow::on_treeWidget_itemClicked(QTreeWidgetItem* item, int column)
     // Emulate fragments -- there are symbolic links all pointing
     // to the one HTML file, and a JavaScript fragment loads the correct
     // fragment from within the document
-    ui->webView->load(QUrl(BASE + "Human_brain-text_only.FRAGMENT_"
+    ui->webView->load(QUrl("qrc" + BASE + "Human_brain-text_only.FRAGMENT_"
                            + item->text(column).replace(" ", "_") + "_FRAGMENT.html"));
 
     return;

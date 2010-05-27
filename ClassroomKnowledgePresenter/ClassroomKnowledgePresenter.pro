@@ -13,13 +13,13 @@ QT += network \
     phonon \
     multimedia \
     testlib \
-    dbus
+    #dbus
 TARGET = ClassroomKnowledgePresenter
 TEMPLATE = app
 SOURCES += main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    quiz.cpp
 HEADERS += mainwindow.h \
-    ../quiz.h \
-    jjjj.h
+    quiz.h
 FORMS += mainwindow.ui
 RESOURCES += classroomknowledgepresenter.qrc

@@ -9,6 +9,12 @@
 #include <QStringListIterator>
 #include <QSet>
 #include <QTreeWidgetItem>
+#include <QDomDocument>
+#include <QDomElement>
+#include <QDomNode>
+#include <QMessageBox>
+#include <QMultiMap>
+#include <QImage>
 
 
 namespace Ui {
@@ -29,7 +35,7 @@ private:
     Ui::MainWindow *ui;
     QStringList visualPictures;
     int visualPicturesIndex; // can't declare with type QStringListIterator here, for some reason
-    QPixmap originalPixmap;
+    QImage originalImage;
     QString BASE;
     QString IMAGE_BASE;
     void updateVisualPicture();
