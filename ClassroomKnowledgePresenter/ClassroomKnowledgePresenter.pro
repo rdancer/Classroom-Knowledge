@@ -23,3 +23,5 @@ HEADERS += mainwindow.h \
     quiz.h
 FORMS += mainwindow.ui
 RESOURCES += classroomknowledgepresenter.qrc
+
+CONFIG += release
