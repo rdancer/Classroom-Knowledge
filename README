@@ -1,11 +1,5 @@
 Classroom Knowledge -- Transform and present a knowledge base for different learning styles and environments
 
-LEGAL STUFF
-
-Copyright 2010 Jan Minar <rdancer@rdancer.org>
-Other parties may hold copyright on portions of the individual source files
-Content from Wikipedia provided under the Creative Commons Attribution-ShareAlike License -- for details see http://creativecommons.org/licenses/by-sa/3.0/
-This project uses the Qt library, which is licensed under LGPL version 2.1
 
 WHAT DOES THIS PROGRAM DO
 
@@ -17,6 +11,7 @@ later have some graph views, perhaps have an embedded OpenGL viewport with some
 random donkey junk on it (just to show you can)."
 
 	    -- Chris Willcocks
+
 
 FILES
 
@@ -40,3 +35,11 @@ CLOSING THOUGHTS
 that turmoil. It was using too much of my time."
 
 	    -- Chris Willcocks
+
+
+LEGAL STUFF
+
+Copyright 2010 Jan Minar <rdancer@rdancer.org>
+Other parties may hold copyright on portions of the individual source files
+Content from Wikipedia provided under the Creative Commons Attribution-ShareAlike License -- for details see http://creativecommons.org/licenses/by-sa/3.0/
+This project uses the Qt library, which is licensed under LGPL version 2.1
