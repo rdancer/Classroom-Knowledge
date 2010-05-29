@@ -2,7 +2,8 @@ Classroom Knowledge -- Transform and present a knowledge base for different lear
 
 Copyright 2010 Jan Minar <rdancer@rdancer.org>
 Other parties may hold copyright on portions of the individual source files
-
+Content from Wikipedia provided under the Creative Commons Attribution-ShareAlike License -- for details see http://creativecommons.org/licenses/by-sa/3.0/
+This project uses the Qt library, which is licensed under LGPL version 2.1
 
 WHAT DOES THIS PROGRAM DO
 
@@ -21,7 +22,14 @@ Classroom Knowledge.exe
     The main executable -- run this to start the program
 
 *.dll
-    Libraries -- these should be in the same directory as the executable
+*/*.dll
+    Libraries -- these files and direcories should be in the same directory as
+    the executable
+
+license
+    License texts for some code used in this project, namely the Qt library
+    (LGPL 2.1), some of which are required to be distributed as by the
+    licensing terms
 
 
 CLOSING THOUGHTS
