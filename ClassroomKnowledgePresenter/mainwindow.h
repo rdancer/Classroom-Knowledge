@@ -15,6 +15,7 @@
 #include <QMessageBox>
 #include <QMultiMap>
 #include <QImage>
+#include <iostream>
 
 
 namespace Ui {

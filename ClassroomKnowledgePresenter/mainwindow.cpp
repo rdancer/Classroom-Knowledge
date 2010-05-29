@@ -82,6 +82,12 @@ void MainWindow::resizeEvent(QResizeEvent * /* event */)
 /* Same source as MainWindow::resizeEvent(QResizeEvent *) */
 void MainWindow::updateVisualPicture()
 {
+    // XXX Handle errors properly
+    if (originalImage.isNull()) {
+        std::cout << "originalImage is null" << std::endl;
+        return;
+    }
+
     ui->visualPicture->setPixmap(QPixmap::fromImage(originalImage).scaled(ui->visualPicture->size(),
                                                      Qt::KeepAspectRatio,
                                                      Qt::SmoothTransformation));
@@ -113,8 +119,11 @@ void MainWindow::on_tabWidget_currentChanged(int index)
 void MainWindow::on_visualPaneNext_clicked()
 {
     if (visualPicturesIndex + 1 < visualPictures.size()) {
-        originalImage.load(visualPictures[++visualPicturesIndex]);
-//        ui->visualPicture->setPixmap(myPixmap);
+        if (!originalImage.load(visualPictures[++visualPicturesIndex])) {
+            std::cout << "can't load image "
+                    /*<< visualPictures[visualPicturesIndex]*/ << std::endl;
+            return;
+        }
         updateVisualPicture();
     }
 }
@@ -122,8 +131,11 @@ void MainWindow::on_visualPaneNext_clicked()
 void MainWindow::on_visualPanePrevious_clicked()
 {
     if (visualPicturesIndex > 0) {
-        originalImage.load(visualPictures[--visualPicturesIndex]);
-//        ui->visualPicture->setPixmap(myPixmap);
+        if (!originalImage.load(visualPictures[--visualPicturesIndex])) {
+            std::cout << "can't load image "
+                    << QString(visualPictures[visualPicturesIndex]).toStdString() << std::endl;
+            return;
+        }
         updateVisualPicture();
     }
 }
