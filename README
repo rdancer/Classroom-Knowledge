@@ -11,9 +11,9 @@ with a generate button which displays one of 5 premade GUI forms displaying the
 content in various layouts. Use some Qt animations etc to spice it up, add
 scripting support so you can modify various properties in runtime, possibly
 later have some graph views, perhaps have an embedded OpenGL viewport with some
-random [donkey] junk on it (just to show you can)."
+random donkey junk on it (just to show you can)."
 
-	    — Chris Willcocks
+	    -- Chris Willcocks
 
 FILES
 
@@ -29,4 +29,4 @@ CLOSING THOUGHTS
     "I ended the compile a while ago - I can't remember having to go through
 that turmoil. It was using too much of my time."
 
-	    — Chris Willcocks
+	    -- Chris Willcocks
