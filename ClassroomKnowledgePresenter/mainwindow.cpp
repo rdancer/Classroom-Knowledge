@@ -99,21 +99,10 @@ void MainWindow::updateVisualPicture()
  */
 void MainWindow::on_tabWidget_currentChanged(int index)
 {
-    switch (index) {
-    case 0: // Visual
-        updateVisualPicture();
-        break;
-    case 1: // Applied
-        break;
-    case 2: // Interactive
-        break;
-    case 3: // Text
-        break;
-//    default:
-//        /* XXX throw error */
-//        abort();
-//        break;
-    }
+    // resize the *Visual* picture to good size
+    // Note: we could just do this when the *Visual* tab is selected,
+    // this is a bit of an overkill to do it any time any tab is selected
+    updateVisualPicture();
 }
 
 void MainWindow::on_visualPaneNext_clicked()
@@ -253,4 +242,10 @@ void MainWindow::on_treeWidget_itemClicked(QTreeWidgetItem* item, int column)
 
     url.setFragment(item->text(column));
     ui->webView->setUrl(url);
+}
+
+void MainWindow::on_mainWindowSplitter_splitterMoved(int pos, int index)
+{
+    // Resize the *Visual* tab picture
+    updateVisualPicture();
 }

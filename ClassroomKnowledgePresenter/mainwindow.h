@@ -44,6 +44,7 @@ private:
     void setUpVisualTab();
 
 private slots:
+    void on_mainWindowSplitter_splitterMoved(int pos, int index);
     void on_treeWidget_itemClicked(QTreeWidgetItem* item, int column);
     void on_actionQuit_triggered();
     void on_question3Answer_editingFinished();
