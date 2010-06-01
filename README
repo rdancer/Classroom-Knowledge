@@ -23,7 +23,7 @@ Classroom Knowledge.exe
     Libraries -- these files and direcories should be in the same directory as
     the executable
 
-license
+license/*
     License texts for some code used in this project, namely the Qt library
     (LGPL 2.1), some of which are required to be distributed as by the
     licensing terms
