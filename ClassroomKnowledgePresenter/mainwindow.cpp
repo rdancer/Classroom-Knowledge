@@ -26,8 +26,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
 void MainWindow::setUpQuizTab()
 {
-    //Quiz q(ui->quizTab);
-    //quizView = &q;
+    quizView = new Quiz(ui->quizScrollAreaContents);
 }
 
 void MainWindow::setUpTextTab()

@@ -20,6 +20,7 @@
 
 #include <QWidget>
 
+
 class Quiz : public QWidget
 {
     Q_OBJECT
@@ -27,6 +28,9 @@ class Quiz : public QWidget
 public:
     Quiz(QWidget *parent = 0);
     ~Quiz();
+
+private:
+    void addQuestions();
 };
 
 #endif // QUIZ_H
