@@ -21,6 +21,13 @@ MainWindow::MainWindow(QWidget *parent) :
 
     setUpTextTab();
     setUpVisualTab();
+    setUpQuizTab();
+}
+
+void MainWindow::setUpQuizTab()
+{
+    //Quiz q(ui->quizTab);
+    //quizView = &q;
 }
 
 void MainWindow::setUpTextTab()
@@ -99,6 +106,8 @@ void MainWindow::updateVisualPicture()
  */
 void MainWindow::on_tabWidget_currentChanged(int index)
 {
+    Q_UNUSED(index);
+
     // resize the *Visual* picture to good size
     // Note: we could just do this when the *Visual* tab is selected,
     // this is a bit of an overkill to do it any time any tab is selected
@@ -160,7 +169,8 @@ void MainWindow::on_question2Answer_editingFinished()
 #else /* 0 */
 void MainWindow::on_question2Answer_editingFinished()
 {
-    int correctAnswer;
+    // XXX Magic number to suppress "may be used uninitialized in this function" warning
+    int correctAnswer = -42;
     QMultiMap<QString, QString> questionText;
 
   /* Adapted from <http://doc.trolltech.com/4.6/qdomdocument.html#details> */
@@ -246,6 +256,9 @@ void MainWindow::on_treeWidget_itemClicked(QTreeWidgetItem* item, int column)
 
 void MainWindow::on_mainWindowSplitter_splitterMoved(int pos, int index)
 {
+    Q_UNUSED(pos);
+    Q_UNUSED(index);
+
     // Resize the *Visual* tab picture
     updateVisualPicture();
 }

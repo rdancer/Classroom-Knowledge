@@ -17,6 +17,8 @@
 #include <QImage>
 #include <iostream>
 
+#include "quiz.h"
+
 
 namespace Ui {
     class MainWindow;
@@ -35,6 +37,8 @@ protected:
 private:
     Ui::MainWindow *ui;
     QStringList visualPictures;
+    Quiz *quizView;
+
     int visualPicturesIndex; // can't declare with type QStringListIterator here, for some reason
     QImage originalImage;
     QString BASE;
@@ -42,6 +46,7 @@ private:
     void updateVisualPicture();
     void setUpTextTab();
     void setUpVisualTab();
+    void setUpQuizTab();
 
 private slots:
     void on_mainWindowSplitter_splitterMoved(int pos, int index);

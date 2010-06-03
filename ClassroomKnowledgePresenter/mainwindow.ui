@@ -120,7 +120,7 @@
       </widget>
       <widget class="QTabWidget" name="tabWidget">
        <property name="currentIndex">
-        <number>0</number>
+        <number>3</number>
        </property>
        <widget class="QWidget" name="tab_4">
         <attribute name="title">
@@ -207,8 +207,8 @@
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>365</width>
-              <height>323</height>
+              <width>344</width>
+              <height>339</height>
              </rect>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -295,6 +295,17 @@
           </widget>
          </item>
         </layout>
+       </widget>
+       <widget class="QWidget" name="quizTab">
+        <property name="whatsThis">
+         <string>Quiz</string>
+        </property>
+        <property name="accessibleName">
+         <string/>
+        </property>
+        <attribute name="title">
+         <string>Quiz</string>
+        </attribute>
        </widget>
        <widget class="QWidget" name="tab_3">
         <attribute name="title">

@@ -15,8 +15,15 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
+//#include "mainwindow.h"
 #include "quiz.h"
 
-quiz::quiz()
+Quiz::~Quiz(){}
+
+Quiz::Quiz(QWidget *parent)
+    : QWidget(parent)
 {
+    // Draw all the widgets in the parent
+    // Populate the widgets in the parent
 }
+

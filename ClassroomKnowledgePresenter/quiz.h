@@ -20,10 +20,13 @@
 
 #include <QWidget>
 
-class quiz : public QWidget
+class Quiz : public QWidget
 {
+    Q_OBJECT
+
 public:
-    quiz();
+    Quiz(QWidget *parent = 0);
+    ~Quiz();
 };
 
 #endif // QUIZ_H
