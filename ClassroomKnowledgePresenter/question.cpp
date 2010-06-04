@@ -25,6 +25,7 @@ Question::Question(QWidget *parent)
     questionNumber = 0;
     myParent = parent;  // kludge
     guessed = false;    // Initially we haven't guessed right
+    uiBuilt = false;      // kludge; we'll set it to true when we finalize the UI
 
     Q_ASSERT (parent->layout());
     questionLabel = new QLabel();
@@ -113,19 +114,59 @@ void Question::insertOption(int value)
 // XXX Should be slot??
 void Question::updateUi()
 {
+    /* Nothing to do if we haven't built the UI */
+    if (!uiBuilt) return;
+
     if (guessed) {
         questionLabel->setText(tr("%1. ").arg(questionNumber)
                                + "<span style=\"color: green\">" + questionOk + "</span>");
     } else {
         questionLabel->setText(tr("%1. ").arg(questionNumber) + question);
     }
-
-    // Nuke all the UI elements
-    // Populate them again
 }
 
 void Question::setQuestionNumber(int questionNumber)
 {
     this->questionNumber = questionNumber;
     updateUi();
+}
+
+/* Get all the elements of the Question–Answer and build a consistent UI */
+void Question::buildUi()
+{
+    //
+    // We work with several assumptions here:
+    //
+    // (1) There is only one correct answer
+    // (2) The spinner is a suitable method for entering large integers
+    // (3) …
+
+    // Number. Question
+    uiBuilt = true;     // updateUi() checks this
+    updateUi();
+
+    Q_ASSERT_X (!correctAnswersStrings.isEmpty() || !correctAnswersInts.isEmpty(), "buildUi()", "Need at least one correct answer");
+
+    // Decide which kind of answer vehicle to use: multiple option / spinner / free text input
+    if (!optionPoolInts.isEmpty() || !optionPoolStrings.isEmpty()) {
+        // Multiple options
+        // Treat them as strings
+        QList<QString> options;
+        foreach (QString s, optionPoolStrings) {
+            options << s;
+        }
+        foreach (int i, optionPoolInts) {
+            options << QString::number(i);
+        }
+        // TODO randomization
+        foreach (QString s, options) {
+            myParent->layout()->addWidget(new QLabel(s));
+        }
+    } else if (correctAnswersStrings.isEmpty()) {
+        // Integer (with no options) => spinner
+        Q_ASSERT(!correctAnswersInts.isEmpty());
+    } else {
+        // String with no options => freeform text input
+        Q_ASSERT(!correctAnswersStrings.isEmpty());
+    }
 }

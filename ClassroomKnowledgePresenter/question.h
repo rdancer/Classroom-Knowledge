@@ -45,6 +45,7 @@ public:
     void guessedRight();
     void guessedWrong();
     void setQuestionNumber(int questionNumber);
+    void buildUi();
 
 private:
     QSet<QString> correctAnswersStrings;
@@ -62,6 +63,7 @@ private:
 
     // Used in a kludge
     QWidget *myParent;
+    bool uiBuilt;
 };
 
 #endif // QUESTION_H

@@ -70,6 +70,7 @@ void Quiz::addQuestions()
         myQuestion.insertOption("your mom");
         myQuestion.insertOption("Sneezy");
         myQuestion.insertOption("Bashful");
+        myQuestion.buildUi();
 
         break;
     }
