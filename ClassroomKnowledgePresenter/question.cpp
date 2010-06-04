@@ -24,7 +24,7 @@ Question::Question(QWidget *parent)
 {
     questionNumber = 0;
     myParent = parent;  // kludge
-//    guessed = false;    // Initially we haven't guessed right
+    guessed = false;    // Initially we haven't guessed right
 
     Q_ASSERT (parent->layout());
     questionLabel = new QLabel();
@@ -99,6 +99,17 @@ void Question::insertCorrectAnswer(int value)
     correctAnswersInts << value;
 }
 
+void Question::insertOption(QString value)
+{
+    optionPoolStrings << value;
+}
+
+void Question::insertOption(int value)
+{
+    optionPoolInts << value;
+}
+
+
 // XXX Should be slot??
 void Question::updateUi()
 {
@@ -108,6 +119,9 @@ void Question::updateUi()
     } else {
         questionLabel->setText(tr("%1. ").arg(questionNumber) + question);
     }
+
+    // Nuke all the UI elements
+    // Populate them again
 }
 
 void Question::setQuestionNumber(int questionNumber)

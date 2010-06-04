@@ -40,6 +40,8 @@ public:
     bool guess(int guess);
     void insertCorrectAnswer(QString value);
     void insertCorrectAnswer(int value);
+    void insertOption(QString value);
+    void insertOption(int value);
     void guessedRight();
     void guessedWrong();
     void setQuestionNumber(int questionNumber);
@@ -47,6 +49,8 @@ public:
 private:
     QSet<QString> correctAnswersStrings;
     QSet<int> correctAnswersInts;
+    QSet<QString> optionPoolStrings;
+    QSet<int> optionPoolInts;
     QString question;
     QString questionOk;
     bool guessed;

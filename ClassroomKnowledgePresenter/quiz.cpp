@@ -66,6 +66,11 @@ void Quiz::addQuestions()
         myQuestion.setQuestion("Who is the most beautiful woman of all?");
         myQuestion.setQuestionOk("<strong>Snow White</strong> is more beautiful than you");
         myQuestion.setQuestionNumber(i);
+        myQuestion.insertOption("you");
+        myQuestion.insertOption("your mom");
+        myQuestion.insertOption("Sneezy");
+        myQuestion.insertOption("Bashful");
+
         break;
     }
 }
