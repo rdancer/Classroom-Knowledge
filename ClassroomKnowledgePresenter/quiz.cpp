@@ -62,6 +62,11 @@ void Quiz::addQuestions()
         Question myQuestion(this);
 //        questions->append(myQuestion);
 
+        //
+        // Multiple choice
+        //
+        i = 1;
+
         myQuestion.insertCorrectAnswer("Snow White");
         myQuestion.setQuestion("Who is the most beautiful woman of all?");
         myQuestion.setQuestionOk("<strong>Snow White</strong> is more beautiful than you");
@@ -70,6 +75,40 @@ void Quiz::addQuestions()
 //        myQuestion.insertOption("your mom");
         myQuestion.insertOption("Sneezy");
         myQuestion.insertOption("Bashful");
+        myQuestion.buildUi();
+
+        break;
+    }
+
+    for (int i = 2; /* forever */; i++) {
+        Question myQuestion(this);
+//        questions->append(myQuestion);
+
+    //
+    // Spinner
+    //
+
+    myQuestion.insertCorrectAnswer(2);
+    myQuestion.setQuestion("What does 1 + 1 equal?");
+    myQuestion.setQuestionOk("<strong>1 + 1</strong> = <strong>2</strong>");
+    myQuestion.setQuestionNumber(i);
+    myQuestion.buildUi();
+
+    break;
+}
+
+    for (int i = 3; /* forever */; i++) {
+        Question myQuestion(this);
+//        questions->append(myQuestion);
+
+        //
+        // Freeform text input
+        //
+
+        myQuestion.insertCorrectAnswer("Snow White");
+        myQuestion.setQuestion("Who is the most beautiful woman of all?");
+        myQuestion.setQuestionOk("<strong>Snow White</strong> is more beautiful than you");
+        myQuestion.setQuestionNumber(i);
         myQuestion.buildUi();
 
         break;

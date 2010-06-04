@@ -20,6 +20,8 @@
 #include <algorithm>
 
 #include <QRadioButton>
+#include <QSpinBox>
+#include <QLineEdit>
 
 
 
@@ -175,8 +177,11 @@ void Question::buildUi()
     } else if (correctAnswersStrings.isEmpty()) {
         // Integer (with no options) => spinner
         Q_ASSERT(!correctAnswersInts.isEmpty());
+        myParent->layout()->addWidget(new QSpinBox());
+
     } else {
         // String with no options => freeform text input
         Q_ASSERT(!correctAnswersStrings.isEmpty());
+        myParent->layout()->addWidget(new QLineEdit());
     }
 }
