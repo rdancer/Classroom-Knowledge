@@ -149,10 +149,6 @@ void MainWindow::on_question1Answer1_toggled(bool checked)
     ui->question1->setText(questionText[checked == CORRECT_ANSWER ? 1 : 0]);
 }
 
-// XXX This function is a remnant of before-refactoring old bad name of an UI element
-// Low-priority to-do: get rid of it
-void MainWindow::on_spinBox_editingFinished(){}
-
 
 # if 0
 void MainWindow::on_question2Answer_editingFinished()

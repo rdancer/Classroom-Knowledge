@@ -18,10 +18,11 @@ TARGET = ClassroomKnowledgePresenter
 TEMPLATE = app
 SOURCES += main.cpp \
     mainwindow.cpp \
-    quiz.cpp
+    quiz.cpp \
+    question.cpp
 HEADERS += mainwindow.h \
-    quiz.h
+    quiz.h \
+    question.h
 FORMS += mainwindow.ui
 RESOURCES += classroomknowledgepresenter.qrc
-
 CONFIG += release

@@ -17,7 +17,7 @@
 
 #include "mainwindow.h"
 #include "quiz.h"
-
+#include "question.h"
 
 #include <QLineEdit>
 #include <QTextEdit>
@@ -25,6 +25,9 @@
 #include <QLayout>
 #include <QLabel>
 #include <QScrollArea>
+#include <QList>
+#include <QString>
+
 
 Quiz::~Quiz(){}
 
@@ -44,24 +47,25 @@ Quiz::Quiz(QWidget *parent)
 
 /*
  * Add questions to the (likely empty) quiz
- *
- * TODO: XML backend
  */
 void Quiz::addQuestions()
 {
-    /* Just a simple question to show we can */
+    /*
+     * XML backend
+     */
 
-    const int CORRECT_ANSWER = 1;
-    QString questionText[2] = {
-        "1. What does 1 + 1 equal?",
-        "1. <span style=\"color: green\"><strong>1 + 1</strong> = <strong>2</strong></span>"
-    };
+    //QList<Question> *questions = new QList<Question>();
 
-    QLabel *question = new QLabel(questionText[CORRECT_ANSWER]);
-    QLineEdit *answer = new QLineEdit;
+    /* Scour the XML for questions and populate the list */
 
-    Q_ASSERT_X(this->layout(), "generating quiz", "parent widget has no associated layout");
+    for (int i = 1; /* forever */; i++) {
+        Question myQuestion(this);
+//        questions->append(myQuestion);
 
-    this->layout()->addWidget(question);
-    this->layout()->addWidget(answer);
+        myQuestion.insertCorrectAnswer("Snow White");
+        myQuestion.setQuestion("Who is the most beautiful woman of all?");
+        myQuestion.setQuestionOk("<strong>Snow White</strong> is more beautiful than you");
+        myQuestion.setQuestionNumber(i);
+        break;
+    }
 }

@@ -54,7 +54,6 @@ private slots:
     void on_actionQuit_triggered();
     void on_question3Answer_editingFinished();
     void on_question2Answer_editingFinished();
-    void on_spinBox_editingFinished();
     void on_question1Answer1_toggled(bool checked);
     void on_visualPanePrevious_clicked();
     void on_visualPaneNext_clicked();
