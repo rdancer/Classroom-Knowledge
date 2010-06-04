@@ -17,6 +17,10 @@
 
 #include "question.h"
 
+#include <algorithm>
+
+#include <QRadioButton>
+
 
 
 Question::Question(QWidget *parent)
@@ -152,15 +156,21 @@ void Question::buildUi()
         // Multiple options
         // Treat them as strings
         QList<QString> options;
+        foreach (QString s, correctAnswersStrings) {
+            options << s;
+        }
         foreach (QString s, optionPoolStrings) {
             options << s;
+        }
+        foreach (int i, correctAnswersInts) {
+            options << QString::number(i);
         }
         foreach (int i, optionPoolInts) {
             options << QString::number(i);
         }
-        // TODO randomization
+        std::random_shuffle(options.begin(), options.end());
         foreach (QString s, options) {
-            myParent->layout()->addWidget(new QLabel(s));
+            myParent->layout()->addWidget(new QRadioButton(s));
         }
     } else if (correctAnswersStrings.isEmpty()) {
         // Integer (with no options) => spinner
