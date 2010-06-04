@@ -65,7 +65,6 @@ void Quiz::addQuestions()
         //
         // Multiple choice
         //
-        i = 1;
 
         myQuestion.insertCorrectAnswer("Snow White");
         myQuestion.setQuestion("Who is the most beautiful woman of all?");
@@ -113,4 +112,25 @@ void Quiz::addQuestions()
 
         break;
     }
+    for (int i = 4; /* forever */; i++) {
+        Question myQuestion(this);
+//        questions->append(myQuestion);
+
+        //
+        // Multiple choice again
+        //
+
+        myQuestion.insertCorrectAnswer("Snow White");
+        myQuestion.setQuestion("Who is the most beautiful woman of all?");
+        myQuestion.setQuestionOk("<strong>Snow White</strong> is more beautiful than you");
+        myQuestion.setQuestionNumber(i);
+        myQuestion.insertOption("you");
+//        myQuestion.insertOption("your mom");
+        myQuestion.insertOption("Sneezy");
+        myQuestion.insertOption("Bashful");
+        myQuestion.buildUi();
+
+        break;
+    }
+
 }

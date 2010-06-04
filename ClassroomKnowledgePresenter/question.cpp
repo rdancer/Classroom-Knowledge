@@ -18,12 +18,13 @@
 #include "question.h"
 
 #include <algorithm>
+#include <iostream>
 
 #include <QRadioButton>
 #include <QSpinBox>
 #include <QLineEdit>
-
-
+#include <QButtonGroup>
+#include <QAbstractButton>
 
 Question::Question(QWidget *parent)
     : QWidget(parent)
@@ -143,7 +144,7 @@ void Question::buildUi()
     //
     // We work with several assumptions here:
     //
-    // (1) There is only one correct answer
+    // (1) There is one and only one correct answer
     // (2) The spinner is a suitable method for entering large integers
     // (3) …
 
@@ -151,13 +152,17 @@ void Question::buildUi()
     uiBuilt = true;     // updateUi() checks this
     updateUi();
 
-    Q_ASSERT_X (!correctAnswersStrings.isEmpty() || !correctAnswersInts.isEmpty(), "buildUi()", "Need at least one correct answer");
+    Q_ASSERT_X (!correctAnswersStrings.isEmpty() || !correctAnswersInts.isEmpty(),
+                "buildUi()", "Need at least one correct answer");
 
     // Decide which kind of answer vehicle to use: multiple option / spinner / free text input
     if (!optionPoolInts.isEmpty() || !optionPoolStrings.isEmpty()) {
         // Multiple options
-        // Treat them as strings
         QList<QString> options;
+        QRadioButton *radioButton;
+        QButtonGroup *buttonGroup = new QButtonGroup();
+
+        // Treat both int and QString options as strings
         foreach (QString s, correctAnswersStrings) {
             options << s;
         }
@@ -171,14 +176,16 @@ void Question::buildUi()
             options << QString::number(i);
         }
         std::random_shuffle(options.begin(), options.end());
+
         foreach (QString s, options) {
-            myParent->layout()->addWidget(new QRadioButton(s));
+            radioButton = new QRadioButton(s);
+            buttonGroup->addButton(radioButton);
+            myParent->layout()->addWidget(radioButton);
         }
     } else if (correctAnswersStrings.isEmpty()) {
         // Integer (with no options) => spinner
         Q_ASSERT(!correctAnswersInts.isEmpty());
         myParent->layout()->addWidget(new QSpinBox());
-
     } else {
         // String with no options => freeform text input
         Q_ASSERT(!correctAnswersStrings.isEmpty());
