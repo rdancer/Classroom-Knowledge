@@ -46,7 +46,13 @@ Quiz::Quiz(QWidget *parent)
      * Add the questions
      */
     addQuestions();
+
+    /*
+     * Add stretchable vertical spacer at the bottom
+     */
+    (qobject_cast<QVBoxLayout *>(this->layout()))->addStretch();
 }
+
 
 /*
  * Add questions to the (likely empty) quiz
