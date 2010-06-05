@@ -27,6 +27,9 @@
 #include <QScrollArea>
 #include <QList>
 #include <QString>
+#include <QDomDocument>
+#include <QDomElement>
+#include <QDomNode>
 
 
 Quiz::~Quiz(){}
@@ -50,87 +53,62 @@ Quiz::Quiz(QWidget *parent)
  */
 void Quiz::addQuestions()
 {
+    QString BASE = "data/Wikipedia/"; // XXX kludge -- at least define in one place!!!
+
     /*
      * XML backend
      */
 
-    //QList<Question> *questions = new QList<Question>();
+    questions = new QList<Question *>();
 
     /* Scour the XML for questions and populate the list */
 
-    for (int i = 1; /* forever */; i++) {
-        Question myQuestion(this);
-//        questions->append(myQuestion);
+    /* Adapted from <http://doc.trolltech.com/4.6/qdomdocument.html#details> */
 
-        //
-        // Multiple choice
-        //
-
-        myQuestion.insertCorrectAnswer("Snow White");
-        myQuestion.setQuestion("Who is the most beautiful woman of all?");
-        myQuestion.setQuestionOk("<strong>Snow White</strong> is more beautiful than you");
-        myQuestion.setQuestionNumber(i);
-        myQuestion.insertOption("you");
-//        myQuestion.insertOption("your mom");
-        myQuestion.insertOption("Sneezy");
-        myQuestion.insertOption("Bashful");
-        myQuestion.buildUi();
-
-        break;
+    /* Init the XML engine */
+    QDomDocument doc("mydocument");
+    QFile file(BASE + "Human_brain-text_only.html");
+    if (!file.open(QIODevice::ReadOnly))
+        return;
+    if (!doc.setContent(&file)) {
+        file.close();
+        return;
     }
+    file.close();
 
-    for (int i = 2; /* forever */; i++) {
-        Question myQuestion(this);
-//        questions->append(myQuestion);
+    /* Locate the <question> tag */
+    QDomNodeList allQuestionElements = doc.elementsByTagName("question");
 
-    //
-    // Spinner
-    //
+    for (int i = 0; i < allQuestionElements.size(); i++) {
+        Question *question = new Question(this);
 
-    myQuestion.insertCorrectAnswer(2);
-    myQuestion.setQuestion("What does 1 + 1 equal?");
-    myQuestion.setQuestionOk("<strong>1 + 1</strong> = <strong>2</strong>");
-    myQuestion.setQuestionNumber(i);
-    myQuestion.buildUi();
+        questions->append(question),
+        question->setQuestionNumber(questions->count()); // Make sure not to append() another in-between
 
-    break;
-}
-
-    for (int i = 3; /* forever */; i++) {
-        Question myQuestion(this);
-//        questions->append(myQuestion);
-
-        //
-        // Freeform text input
-        //
-
-        myQuestion.insertCorrectAnswer("Snow White");
-        myQuestion.setQuestion("Who is the most beautiful woman of all?");
-        myQuestion.setQuestionOk("<strong>Snow White</strong> is more beautiful than you");
-        myQuestion.setQuestionNumber(i);
-        myQuestion.buildUi();
-
-        break;
+        /* Go through the children of <question> and populate the Question */
+        for(QDomNode node = allQuestionElements.at(i).firstChild(); !node.isNull(); node = node.nextSibling()) {
+            QDomElement element = node.toElement(); // try to convert the node to an element.
+            if(!element.isNull()) {
+                /* switch: individual fields of Question */
+                if (element.tagName() == "answer") {
+                    if (!element.attribute("correct").isNull()) {
+                        question->insertCorrectAnswer(element.text());
+                    } else {
+                        question->insertOption(element.text());
+                    }
+                } else if (element.tagName() == "questionText") {
+                    if (element.attribute("display") == "default") {
+                        question->setQuestion(element.text());
+                    } else if (element.attribute("display") == "success") {
+                        question->setQuestionOk(element.text());
+                    } else {
+                        // TODO Unrecognized
+                    }
+                } else {
+                    // TODO Unrecognized
+                }
+            }
+        }
+        question->buildUi();
     }
-    for (int i = 4; /* forever */; i++) {
-        Question myQuestion(this);
-//        questions->append(myQuestion);
-
-        //
-        // Multiple choice again
-        //
-
-        myQuestion.insertCorrectAnswer("Snow White");
-        myQuestion.setQuestion("Who is the most beautiful woman of all?");
-        myQuestion.setQuestionOk("<strong>Snow White</strong> is more beautiful than you");
-        myQuestion.setQuestionNumber(i);
-        myQuestion.insertOption("you");
-//        myQuestion.insertOption("your mom");
-        myQuestion.insertOption("Sneezy");
-        myQuestion.insertOption("Bashful");
-        myQuestion.buildUi();
-
-        break;
-    }
-
 }

@@ -46,26 +46,26 @@
         <file>data/Wikipedia/Human_brain_files/Vector.js</file>
         <file>data/Wikipedia/Human_brain_files/wikibits.js</file>
         <file>data/Wikipedia/Human_brain_files/wikimedia-button.png</file>
-        <file>data/Wikipedia/Human_brain-text_only.FRAGMENT_Cortical_divisions_FRAGMENT.html</file>
-        <file>data/Wikipedia/Human_brain-text_only.FRAGMENT_Development_FRAGMENT.html</file>
-        <file>data/Wikipedia/Human_brain-text_only.FRAGMENT_EEG_FRAGMENT.html</file>
-        <file>data/Wikipedia/Human_brain-text_only.FRAGMENT_Effects_of_brain_damage_FRAGMENT.html</file>
         <file>data/Wikipedia/Human_brain-text_only.FRAGMENT_External_links_FRAGMENT.html</file>
-        <file>data/Wikipedia/Human_brain-text_only.FRAGMENT_Four_lobes_FRAGMENT.html</file>
-        <file>data/Wikipedia/Human_brain-text_only.FRAGMENT_Functional_divisions_FRAGMENT.html</file>
-        <file>data/Wikipedia/Human_brain-text_only.FRAGMENT_General_features_FRAGMENT.html</file>
-        <file>data/Wikipedia/Human_brain-text_only.FRAGMENT_Language_FRAGMENT.html</file>
-        <file>data/Wikipedia/Human_brain-text_only.FRAGMENT_Lateralization_FRAGMENT.html</file>
+        <file>data/Wikipedia/Human_brain-text_only.FRAGMENT_Topography_FRAGMENT.html</file>
         <file>data/Wikipedia/Human_brain-text_only.FRAGMENT_MEG_FRAGMENT.html</file>
-        <file>data/Wikipedia/Human_brain-text_only.FRAGMENT_Metabolism_FRAGMENT.html</file>
+        <file>data/Wikipedia/Human_brain-text_only.FRAGMENT_Development_FRAGMENT.html</file>
+        <file>data/Wikipedia/Human_brain-text_only.FRAGMENT_Language_FRAGMENT.html</file>
+        <file>data/Wikipedia/Human_brain-text_only.html</file>
+        <file>data/Wikipedia/Human_brain-text_only.FRAGMENT_General_features_FRAGMENT.html</file>
+        <file>data/Wikipedia/Human_brain-text_only.FRAGMENT_Functional_divisions_FRAGMENT.html</file>
+        <file>data/Wikipedia/Human_brain-text_only.FRAGMENT_Lateralization_FRAGMENT.html</file>
         <file>data/Wikipedia/Human_brain-text_only.FRAGMENT_Notes_FRAGMENT.html</file>
-        <file>data/Wikipedia/Human_brain-text_only.FRAGMENT_Pathology_FRAGMENT.html</file>
+        <file>data/Wikipedia/Human_brain-text_only.FRAGMENT_Cortical_divisions_FRAGMENT.html</file>
         <file>data/Wikipedia/Human_brain-text_only.FRAGMENT_References_FRAGMENT.html</file>
+        <file>data/Wikipedia/Human_brain-text_only.FRAGMENT_Pathology_FRAGMENT.html</file>
         <file>data/Wikipedia/Human_brain-text_only.FRAGMENT_See_also_FRAGMENT.html</file>
-        <file>data/Wikipedia/Human_brain-text_only.FRAGMENT_Sources_of_information_FRAGMENT.html</file>
         <file>data/Wikipedia/Human_brain-text_only.FRAGMENT_Structural_and_functional_imaging_FRAGMENT.html</file>
         <file>data/Wikipedia/Human_brain-text_only.FRAGMENT_Structure_FRAGMENT.html</file>
-        <file>data/Wikipedia/Human_brain-text_only.FRAGMENT_Topography_FRAGMENT.html</file>
-        <file>data/Wikipedia/Human_brain-text_only.html</file>
+        <file>data/Wikipedia/Human_brain-text_only.FRAGMENT_Metabolism_FRAGMENT.html</file>
+        <file>data/Wikipedia/Human_brain-text_only.FRAGMENT_Four_lobes_FRAGMENT.html</file>
+        <file>data/Wikipedia/Human_brain-text_only.FRAGMENT_Sources_of_information_FRAGMENT.html</file>
+        <file>data/Wikipedia/Human_brain-text_only.FRAGMENT_EEG_FRAGMENT.html</file>
+        <file>data/Wikipedia/Human_brain-text_only.FRAGMENT_Effects_of_brain_damage_FRAGMENT.html</file>
     </qresource>
 </RCC>

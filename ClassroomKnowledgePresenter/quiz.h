@@ -19,6 +19,7 @@
 #define QUIZ_H
 
 #include <QWidget>
+#include "question.h"
 
 
 class Quiz : public QWidget
@@ -31,6 +32,7 @@ public:
 
 private:
     void addQuestions();
+    QList<Question *> *questions;
 };
 
 #endif // QUIZ_H

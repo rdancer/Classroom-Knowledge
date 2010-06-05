@@ -99,7 +99,12 @@ void Question::guessedWrong()
 
 void Question::insertCorrectAnswer(QString value)
 {
-    correctAnswersStrings << value;
+    /* If we can convert value to int and back, without loss, it really is an int */
+    if (QString::number(value.toInt()) == value) {
+        correctAnswersInts << value.toInt();
+    } else {
+        correctAnswersStrings << value;
+    }
 }
 
 void Question::insertCorrectAnswer(int value)

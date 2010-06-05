@@ -5,7 +5,7 @@
   "HTML Tidy for Linux (vers 25 March 2009), see www.w3.org" />
 
   <title>Human brain - Wikipedia, the free encyclopedia</title>
-  <!-- Modified by Jan MinÃ¡Å" <rdancer@rdancer.org> -->
+  <!-- Modified by Jan Minar" <rdancer@rdancer.org> -->
   <meta http-equiv="Content-Type" content=
   "text/html; charset=us-ascii" />
   <meta http-equiv="Content-Style-Type" content="text/css" />
@@ -1362,16 +1362,61 @@
 	  <c:input type="spinner" />
       </c:question>
 -->
+
+      <!--
+           Spinner
+        -->
+
     <!-- display: none so that the contents are not rendered in *Text* view (as
          per Issue #6) -->
       <question style="display: none">
-	  <correctAnswer>1</correctAnswer>
-	  <questionText display="default">
-	    <![CDATA[2. Which Brodmann area number denotes the primary somatosensory cortex?]]>
-	  </questionText>
-	  <questionText display="success">
-	    <![CDATA[2. <span style='color: green'><strong>Brodmann area 1</strong> denotes the primary <strong>somatosensory</strong> cortex</span>]]>
-	  </questionText>
+	  <answer correct="correct">1</answer>
+	  <questionText display="default"
+	    >Which Brodmann area number denotes the primary somatosensory cortex?</questionText>
+	  <questionText display="success"
+	    ><strong>Brodmann area 1</strong> denotes the primary <strong>somatosensory</strong> cortex</questionText>
+	  <input type="spinner" />
+      </question>
+
+      <!--
+           Spinner again
+        -->
+
+      <question style="display: none">
+	  <answer correct="correct">2</answer>
+	  <questionText display="default"
+	    >What does 1 + 1 equal?</questionText>
+	  <questionText display="success"
+	    ><strong>1 + 1</strong> = <strong>2</strong></questionText>
+	  <input type="spinner" />
+      </question>
+
+      <!--
+           Multiple choice
+        -->
+
+      <question style="display: none">
+	  <questionText display="default"
+	    >Who is the most beautiful woman of all?</questionText>
+	  <questionText display="success"
+	    ><strong>Snow White</strong> is more beautiful than you</questionText>
+	  <answer correct="correct">Snow White</answer>
+	  <answer>you</answer>
+	  <answer>Sneezy</answer>
+	  <answer>Bashful</answer>
+	  <input type="spinner" />
+      </question>
+
+      <!--
+           Freeform text input
+        -->
+
+      <question style="display: none">
+	  <questionText display="default"
+	    >Who is the most beautiful woman of all?</questionText>
+	  <questionText display="success"
+	    ><strong>Snow White</strong> is more beautiful than you</questionText>
+	  <answer correct="correct">Snow White</answer>
 	  <input type="spinner" />
       </question>
 
