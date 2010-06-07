@@ -47,6 +47,7 @@ private:
     void setUpTextTab();
     void setUpVisualTab();
     void setUpQuizTab();
+    void setUpInteractiveTab();
 
 private slots:
     void on_mainWindowSplitter_splitterMoved(int pos, int index);

@@ -306,9 +306,12 @@
         <attribute name="title">
          <string>Quiz</string>
         </attribute>
-        <layout class="QVBoxLayout" name="verticalLayout_4">
+        <layout class="QHBoxLayout" name="horizontalLayout_5">
          <item>
-          <widget class="QScrollArea" name="scrollArea_2">
+          <widget class="QScrollArea" name="quizScrollArea">
+           <property name="horizontalScrollBarPolicy">
+            <enum>Qt::ScrollBarAsNeeded</enum>
+           </property>
            <property name="widgetResizable">
             <bool>true</bool>
            </property>
@@ -321,6 +324,11 @@
               <height>309</height>
              </rect>
             </property>
+            <layout class="QVBoxLayout" name="verticalLayout_4">
+             <item>
+              <layout class="QVBoxLayout" name="quizLayout"/>
+             </item>
+            </layout>
            </widget>
           </widget>
          </item>
