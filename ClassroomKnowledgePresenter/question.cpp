@@ -36,6 +36,7 @@ Question::Question(QWidget *parent)
 
     Q_ASSERT (parent->layout());
     questionLabel = new QLabel();
+    questionLabel->setWordWrap(true);
     myParent->layout()->addWidget(questionLabel);
 //    myParent->layout()->addWidget(new QLabel("Hello, world!"));
 }
