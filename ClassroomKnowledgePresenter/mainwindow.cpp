@@ -33,6 +33,10 @@ void MainWindow::setUpInteractiveTab()
 
 void MainWindow::setUpQuizTab()
 {
+    // Remove this tab -- we don't want it
+    ui->tabWidget->removeTab(ui->tabWidget->indexOf(ui->quizTab));
+    return;
+
     quizView = new Quiz(/*ui->quizScrollAreaContents*/);
     ui->quizLayout->addWidget(quizView);
 }
