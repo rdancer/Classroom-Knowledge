@@ -120,7 +120,7 @@
       </widget>
       <widget class="QTabWidget" name="tabWidget">
        <property name="currentIndex">
-        <number>3</number>
+        <number>2</number>
        </property>
        <widget class="QWidget" name="tab_4">
         <attribute name="title">
@@ -213,11 +213,11 @@
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_2">
              <item>
-              <layout class="QVBoxLayout" name="verticalLayout">
+              <layout class="QVBoxLayout" name="interactiveLayout">
                <item>
                 <widget class="QLabel" name="question1">
                  <property name="text">
-                  <string>1. Which lobe is responsible for conscious thought?</string>
+                  <string>5. Which lobe is responsible for conscious thought?</string>
                  </property>
                  <property name="wordWrap">
                   <bool>true</bool>
@@ -255,7 +255,7 @@
                <item>
                 <widget class="QLabel" name="question2">
                  <property name="text">
-                  <string>2. Which Brodmann area number denotes the primary somatosensory cortex?</string>
+                  <string>6. Which Brodmann area number denotes the primary somatosensory cortex?</string>
                  </property>
                  <property name="wordWrap">
                   <bool>true</bool>
@@ -268,7 +268,7 @@
                <item>
                 <widget class="QLabel" name="question3">
                  <property name="text">
-                  <string>3. What does EEG stand for?</string>
+                  <string>7. What does EEG stand for?</string>
                  </property>
                 </widget>
                </item>

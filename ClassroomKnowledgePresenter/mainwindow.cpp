@@ -21,7 +21,14 @@ MainWindow::MainWindow(QWidget *parent) :
 
     setUpTextTab();
     setUpVisualTab();
+    setUpInteractiveTab();
     setUpQuizTab();
+}
+
+void MainWindow::setUpInteractiveTab()
+{
+    quizView = new Quiz();
+    ui->interactiveLayout->insertWidget(0, quizView);
 }
 
 void MainWindow::setUpQuizTab()
@@ -143,8 +150,8 @@ void MainWindow::on_question1Answer1_toggled(bool checked)
 {
     const bool CORRECT_ANSWER = true;
     QString questionText[2] = {
-        "1. Which lobe is responsible for conscious thought?",
-        "1. <span style=\"color: green\"><strong>Frontal</strong> lobe is responsible for <strong>conscious thought</strong></span>"
+        "5. Which lobe is responsible for conscious thought?",
+        "5. <span style=\"color: green\"><strong>Frontal</strong> lobe is responsible for <strong>conscious thought</strong></span>"
     };
 
     ui->question1->setText(questionText[checked == CORRECT_ANSWER ? 1 : 0]);
@@ -156,8 +163,8 @@ void MainWindow::on_question2Answer_editingFinished()
 {
     const int CORRECT_ANSWER = 1;
     QString questionText[2] = {
-        "2. Which Brodmann area number denotes the primary somatosensory cortex?",
-        "2. <span style=\"color: green\"><strong>Brodman area 1</strong> denotes the primary <strong>somatosensory</strong> cortex</span>"
+        "6. Which Brodmann area number denotes the primary somatosensory cortex?",
+        "6. <span style=\"color: green\"><strong>Brodman area 1</strong> denotes the primary <strong>somatosensory</strong> cortex</span>"
     };
 
     ui->question2->setText(questionText[ui->question2Answer->value() == CORRECT_ANSWER ? 1 : 0]);
@@ -211,8 +218,8 @@ void MainWindow::on_question3Answer_editingFinished()
     QSet<QString> CORRECT_ANSWERS;
     CORRECT_ANSWERS << "electroencephalography" << "electroencephalograph";
     QString questionText[2] = {
-        "3. What does EEG stand for?",
-        "3. <span style=\"color: green\">EEG stands for <strong>%1</strong></span>"
+        "7. What does EEG stand for?",
+        "7. <span style=\"color: green\">EEG stands for <strong>%1</strong></span>"
     };
 
     QString guess = ui->question3Answer->text().toLower().replace(QRegExp("[ \t-.]"), "");
