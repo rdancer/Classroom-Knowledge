@@ -51,6 +51,9 @@ Quiz::Quiz(QWidget *parent)
      * Add stretchable vertical spacer at the bottom
      */
     (qobject_cast<QVBoxLayout *>(this->layout()))->addStretch();
+
+    /* Remove padding */
+    this->layout()->setContentsMargins(0, 0, 0, 0);
 }
 
 
