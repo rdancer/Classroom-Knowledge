@@ -29,6 +29,7 @@ class MainWindow : public QMainWindow {
 public:
     MainWindow(QWidget *parent = 0);
     ~MainWindow();
+    void about();
 
 protected:
     void changeEvent(QEvent *e);
@@ -50,6 +51,7 @@ private:
     void setUpInteractiveTab();
 
 private slots:
+    void on_actionAbout_Classroom_Knowledge_triggered();
     void on_mainWindowSplitter_splitterMoved(int pos, int index);
     void on_treeWidget_itemClicked(QTreeWidgetItem* item, int column);
     void on_actionQuit_triggered();
@@ -60,5 +62,12 @@ private slots:
     void on_visualPaneNext_clicked();
     void on_tabWidget_currentChanged(int index);
 };
+
+const QString PROGRAM_NAME = "Classroom Knowledge";
+const QString COPYRIGHT_STATEMENT_HTML = "Copyright &copy; 2010 Jan Min&aacute;&#x0159; &lt;rdancer@rdancer.org&gt;<br />"
+                                         "and other parties.<br /><br />"
+                                         "Content from Wikipedia provided under the Creative Commons Attribution-ShareAlike License&mdash;for details see"
+                                         " <a href='http://creativecommons.org/licenses/by-sa/3.0/'>http://creativecommons.org/licenses/by-sa/3.0/</a>."
+                                         " This project uses the Qt library, which is licensed under LGPL version 2.1";
 
 #endif // MAINWINDOW_H

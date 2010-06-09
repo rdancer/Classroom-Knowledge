@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 
 #include <QStringListIterator>
+#include <QIcon>
 
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -154,26 +155,26 @@ void MainWindow::on_question1Answer1_toggled(bool checked)
 {
     const bool CORRECT_ANSWER = true;
     QString questionText[2] = {
-        "5. Which lobe is responsible for conscious thought?",
-        "5. <span style=\"color: green\"><strong>Frontal</strong> lobe is responsible for <strong>conscious thought</strong></span>"
+        "6. Which lobe is responsible for conscious thought?",
+        "6. <span style=\"color: green\"><strong>Frontal</strong> lobe is responsible for <strong>conscious thought</strong></span>"
     };
 
     ui->question1->setText(questionText[checked == CORRECT_ANSWER ? 1 : 0]);
 }
 
 
-# if 0
+# if 1
 void MainWindow::on_question2Answer_editingFinished()
 {
     const int CORRECT_ANSWER = 1;
     QString questionText[2] = {
-        "6. Which Brodmann area number denotes the primary somatosensory cortex?",
-        "6. <span style=\"color: green\"><strong>Brodman area 1</strong> denotes the primary <strong>somatosensory</strong> cortex</span>"
+        "7. Which Brodmann area number denotes the primary somatosensory cortex?",
+        "7. <span style=\"color: green\"><strong>Brodman area 1</strong> denotes the primary <strong>somatosensory</strong> cortex</span>"
     };
 
     ui->question2->setText(questionText[ui->question2Answer->value() == CORRECT_ANSWER ? 1 : 0]);
 }
-#else /* 0 */
+#else /* 1 */
 void MainWindow::on_question2Answer_editingFinished()
 {
     // XXX Magic number to suppress "may be used uninitialized in this function" warning
@@ -196,34 +197,34 @@ void MainWindow::on_question2Answer_editingFinished()
     /* Locate the <question> tag */
     QDomNode docElem = doc.elementsByTagName("question").at(0);
 
-    QDomNode n = docElem.firstChild();
-    while(!n.isNull()) {
-        QDomElement e = n.toElement(); // try to convert the node to an element.
-        if(!e.isNull()) {
+    QDomNode node = docElem.firstChild();
+    while(!node.isNull()) {
+        QDomElement element = node.toElement(); // try to convert the node to an element.
+        if(!element.isNull()) {
             /* get the <correctAnswer> */
-            if (e.tagName() == "correctAnswer") {
-                correctAnswer = e.text().toInt();
-            } else if (e.tagName() == "questionText") {
-                questionText.insert(e.attribute("display"), e.text());
-            } else if (e.tagName() == "input") {
+            if (element.tagName() == "answer" && !element.attribute("correct").isNull()) {
+                correctAnswer = element.text().toInt();
+            } else if (element.tagName() == "questionText") {
+                questionText.insert(element.attribute("display"), element.text());
+            } else if (element.tagName() == "input") {
                 // TODO draw the input
             }
         }
-        n = n.nextSibling();
+        node = node.nextSibling();
     }
 
     /* draw the <questionText>s */
     ui->question2->setText(questionText.value(ui->question2Answer->value() == correctAnswer ? "success" : "default"));
 }
-#endif /* 0 */
+#endif /* 1 */
 
 void MainWindow::on_question3Answer_editingFinished()
 {
     QSet<QString> CORRECT_ANSWERS;
     CORRECT_ANSWERS << "electroencephalography" << "electroencephalograph";
     QString questionText[2] = {
-        "7. What does EEG stand for?",
-        "7. <span style=\"color: green\">EEG stands for <strong>%1</strong></span>"
+        "8. What does EEG stand for?",
+        "8. <span style=\"color: green\">EEG stands for <strong>%1</strong></span>"
     };
 
     QString guess = ui->question3Answer->text().toLower().replace(QRegExp("[ \t-.]"), "");
@@ -268,4 +269,27 @@ void MainWindow::on_mainWindowSplitter_splitterMoved(int pos, int index)
 
     // Resize the *Visual* tab picture
     updateVisualPicture();
+}
+
+/**
+ * The *About* box (Help > About...)
+ *
+ * Adapted from the »Custom Completer Example« from the Qt 4.6 documentation
+ */
+void MainWindow::about()
+{
+    QMessageBox::about(this, tr("About %1").arg(PROGRAM_NAME),
+//                       tr("<div style='display: block; float: left'><img src='%1' /></div><div style='display: block; float: right'><h3>%2</h3><p>Built on %3 at %4</p><p>%5</p></div>")
+                       tr("<table width='500' cellpadding='0' cellspacing='0' border='0'><tr><td><img src='%1' /></td><td>&nbsp;&nbsp;</td><td><h3>%2</h3><p>Built on %3 at %4</p><p>%5</p></td></tr></table>")
+                       .arg(":/data/Wikipedia/Gray728.nolabels.dropshadow.128x94.png")
+                       .arg(PROGRAM_NAME)
+                       .arg(__DATE__)
+                       .arg(__TIME__)
+                       .arg(COPYRIGHT_STATEMENT_HTML));
+
+}
+
+void MainWindow::on_actionAbout_Classroom_Knowledge_triggered()
+{
+    about();
 }
