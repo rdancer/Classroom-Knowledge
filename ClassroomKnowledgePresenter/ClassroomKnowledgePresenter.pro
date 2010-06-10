@@ -14,6 +14,7 @@ QT += network \
     multimedia \
     testlib \
     #dbus
+
 TARGET = ClassroomKnowledgePresenter
 TEMPLATE = app
 SOURCES += main.cpp \
