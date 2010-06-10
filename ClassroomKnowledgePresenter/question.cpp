@@ -89,16 +89,18 @@ void Question::guess(QAbstractButton *button)
 void Question::guessLoose(QString guess)
 {
     QRegExp ignoredCharacters("[ \t-.]");
+    QString mangledGuess(guess.toLower().replace(ignoredCharacters, ""));
 
     foreach(QString s, correctAnswersStrings) {
-        if (guess.toLower().replace(ignoredCharacters, "") == s.toLower().replace(ignoredCharacters, "")) {
+        if (mangledGuess == s.toLower().replace(ignoredCharacters, "")) {
             guessed = true;
             return;
         }
     }
+
     /* Let guess(QString) handle the eventuality that guess is really an int
        -- this is inefficient, as it duplicates the matching above */
-    this->guess(guess);
+    this->guess(mangledGuess);
 }
 
 
