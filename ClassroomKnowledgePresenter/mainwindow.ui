@@ -207,74 +207,13 @@
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>344</width>
-              <height>339</height>
+              <width>365</width>
+              <height>309</height>
              </rect>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_2">
              <item>
               <layout class="QVBoxLayout" name="interactiveLayout">
-               <item>
-                <widget class="QLabel" name="question1">
-                 <property name="text">
-                  <string>6. Which lobe is responsible for conscious thought?</string>
-                 </property>
-                 <property name="wordWrap">
-                  <bool>true</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QRadioButton" name="question1Answer1">
-                 <property name="text">
-                  <string>Frontal</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QRadioButton" name="question1Answer2">
-                 <property name="text">
-                  <string>Temporal</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QRadioButton" name="question1Answer3">
-                 <property name="text">
-                  <string>Parietal</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QRadioButton" name="question1Answer4">
-                 <property name="text">
-                  <string>Occipital</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="question2">
-                 <property name="text">
-                  <string>7. Which Brodmann area number denotes the primary somatosensory cortex?</string>
-                 </property>
-                 <property name="wordWrap">
-                  <bool>true</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QSpinBox" name="question2Answer"/>
-               </item>
-               <item>
-                <widget class="QLabel" name="question3">
-                 <property name="text">
-                  <string>8. What does EEG stand for?</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLineEdit" name="question3Answer"/>
-               </item>
                <item>
                 <spacer name="verticalSpacer">
                  <property name="orientation">
@@ -320,8 +259,8 @@
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>98</width>
-              <height>28</height>
+              <width>365</width>
+              <height>309</height>
              </rect>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_4">
