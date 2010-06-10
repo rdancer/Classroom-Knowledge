@@ -32,6 +32,7 @@ Question::Question(QWidget *parent)
     questionNumber = 0;
     myParent = parent;  // kludge
     guessed = false;    // Initially we haven't guessed right
+    matchStrict = false; // Match answers loosely by default
     uiBuilt = false;      // kludge; we'll set it to true when we finalize the UI
 
     Q_ASSERT (parent->layout());
