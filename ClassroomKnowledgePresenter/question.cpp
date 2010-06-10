@@ -30,7 +30,7 @@ Question::Question(QWidget *parent)
     : QWidget(parent)
 {
     questionNumber = 0;
-    myParent = parent;  // kludge
+    this->parent = parent;  // kludge
     guessed = false;    // Initially we haven't guessed right
     matchStrict = false; // Match answers loosely by default
     uiBuilt = false;      // kludge; we'll set it to true when we finalize the UI
@@ -38,7 +38,7 @@ Question::Question(QWidget *parent)
     Q_ASSERT (parent->layout());
     questionLabel = new QLabel();
     questionLabel->setWordWrap(true);
-    myParent->layout()->addWidget(questionLabel);
+    parent->layout()->addWidget(questionLabel);
 //    myParent->layout()->addWidget(new QLabel("Hello, world!"));
 }
 
@@ -191,7 +191,7 @@ void Question::buildUi()
         foreach (QString s, options) {
             radioButton = new QRadioButton(s);
             buttonGroup->addButton(radioButton);
-            myParent->layout()->addWidget(radioButton);
+            parent->layout()->addWidget(radioButton);
             connect(buttonGroup, SIGNAL(buttonClicked(QAbstractButton*)), this, SLOT(guess(QAbstractButton*)));
             connect(buttonGroup, SIGNAL(buttonClicked(QAbstractButton*)), this, SLOT(updateUi()));
         }
@@ -199,14 +199,14 @@ void Question::buildUi()
         // Integer (with no options) => spinner
         Q_ASSERT(!correctAnswersInts.isEmpty());
         QSpinBox *spinBox = new QSpinBox;
-        myParent->layout()->addWidget(spinBox);
+        parent->layout()->addWidget(spinBox);
         connect(spinBox, SIGNAL(valueChanged(int)), this, SLOT(guess(int)));
         connect(spinBox, SIGNAL(editingFinished()), this, SLOT(updateUi()));
     } else {
         // String with no options => freeform text input
         Q_ASSERT(!correctAnswersStrings.isEmpty());
         QLineEdit *lineEdit = new QLineEdit;
-        myParent->layout()->addWidget(lineEdit);
+        parent->layout()->addWidget(lineEdit);
         if (matchStrict) {
             connect(lineEdit, SIGNAL(textChanged(QString)), this, SLOT(guess(QString)));
         } else {

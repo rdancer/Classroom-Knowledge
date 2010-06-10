@@ -72,7 +72,7 @@ private slots:
 
 private:
     // Used in a kludge
-    QWidget *myParent;
+    QWidget *parent;
     bool uiBuilt;
 };
 
