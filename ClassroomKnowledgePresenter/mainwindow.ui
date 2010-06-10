@@ -20,7 +20,7 @@
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
       </property>
-      <widget class="QTreeWidget" name="treeWidget">
+      <widget class="QTreeWidget" name="tableOfContents">
        <property name="minimumSize">
         <size>
          <width>193</width>
@@ -259,8 +259,8 @@
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>365</width>
-              <height>309</height>
+              <width>98</width>
+              <height>28</height>
              </rect>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_4">

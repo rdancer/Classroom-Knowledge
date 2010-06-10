@@ -33,6 +33,7 @@
 #include <QMultiMap>
 #include <QImage>
 #include <iostream>
+#include <QFile>
 
 #include "quiz.h"
 
@@ -66,6 +67,8 @@ private:
     void setUpVisualTab();
     void setUpQuizTab();
     void setUpInteractiveTab();
+    void populateTableOfContents(QFile xmlFile, int column);
+
 
 private slots:
     void on_actionAbout_Classroom_Knowledge_triggered();

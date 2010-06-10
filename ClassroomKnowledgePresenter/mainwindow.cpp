@@ -173,6 +173,72 @@ void MainWindow::on_actionQuit_triggered()
     exit(0);
 }
 
+
+/**
+ * Populate the Table of Contents
+ */
+void MainWindow::populateTableOfContents(QFile xmlFile, int column = 0)
+{
+    QString BASE = "data/Wikipedia/"; // XXX kludge -- at least define in one place!!!
+
+    /*
+     * XML backend
+     */
+
+    QList<Question *> questions;
+
+    /* Scour the XML for questions and populate the list */
+
+    /* Adapted from <http://doc.trolltech.com/4.6/qdomdocument.html#details> */
+
+    /* Init the XML engine */
+    QDomDocument doc("mydocument");
+    if (!xmlFile.open(QIODevice::ReadOnly))
+        return;
+    if (!doc.setContent(&xmlFile)) {
+        xmlFile.close();
+        return;
+    }
+    xmlFile.close();
+
+    /* Locate the <question> tag */
+    QDomNodeList allQuestionElements = doc.elementsByTagName("question");
+
+    for (int i = 0; i < allQuestionElements.size(); i++) {
+        Question *question = new Question(this);
+
+        questions->append(question),
+        question->setQuestionNumber(questions->count()); // Make sure not to append() another in-between
+
+        /* Go through the children of <question> and populate the Question */
+        for(QDomNode node = allQuestionElements.at(i).firstChild(); !node.isNull(); node = node.nextSibling()) {
+            QDomElement element = node.toElement(); // try to convert the node to an element.
+            if(!element.isNull()) {
+                /* switch: individual fields of Question */
+                if (element.tagName() == "answer") {
+                    if (!element.attribute("correct").isNull()) {
+                        question->insertCorrectAnswer(element.text());
+                    } else {
+                        question->insertOption(element.text());
+                    }
+                } else if (element.tagName() == "questionText") {
+                    if (element.attribute("display") == "default") {
+                        question->setQuestion(element.text());
+                    } else if (element.attribute("display") == "success") {
+                        question->setQuestionOk(element.text());
+                    } else {
+                        // TODO Unrecognized
+                    }
+                } else {
+                    // TODO Unrecognized
+                }
+            }
+        }
+        question->buildUi();
+    }
+}
+
+
 /* Change the fragment part of the viewed URL */
 void MainWindow::on_treeWidget_itemClicked(QTreeWidgetItem* item, int column)
 {
