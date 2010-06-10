@@ -25,10 +25,13 @@
 #include <QString>
 #include <QVBoxLayout>
 #include <QWidget>
+#include <QAbstractButton>
 
 
 class Question : public QWidget
 {
+    Q_OBJECT
+
 public:
     Question(QWidget *parent);
     void setQuestion(QString s);
@@ -36,16 +39,18 @@ public:
 // Unimplemented
 //    QString questionInitial();
 //    QString questionIfCorrect();
-    bool guess(QString guess);
-    bool guess(int guess);
     void insertCorrectAnswer(QString value);
     void insertCorrectAnswer(int value);
     void insertOption(QString value);
     void insertOption(int value);
-    void guessedRight();
-    void guessedWrong();
     void setQuestionNumber(int questionNumber);
     void buildUi();
+
+public slots:
+    void guess(QAbstractButton *button);
+    void guess(QString guess);
+    void guess(int guess);
+    void guessLoose(QString guess);
 
 private:
     QSet<QString> correctAnswersStrings;
@@ -54,13 +59,18 @@ private:
     QSet<int> optionPoolInts;
     QString question;
     QString questionOk;
+    /** Should the answer be matched strictly? */
+    bool matchStrict;
     bool guessed;
     int questionNumber;
 
     QLabel *questionLabel;
 
+
+private slots:
     void updateUi();
 
+private:
     // Used in a kludge
     QWidget *myParent;
     bool uiBuilt;

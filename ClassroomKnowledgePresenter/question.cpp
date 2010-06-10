@@ -60,43 +60,47 @@ void Question::setQuestionOk(QString s)
 //    QString Question::questionIfCorrect();
 
 /*
- * Check against the known good answers and call the helper functions
- * (so not to duplicate code in the overloaded function)
- *
- * XXX This should be done by templating
+ * Check against the known good answers and update the UI
  */
-bool Question::guess(QString guess)
+void Question::guess(QString guess)
 {
-    if (correctAnswersStrings.contains(guess)) {
-        guessedRight();
-        return true;
-    } else {
-        guessedWrong();
-        return false;
-    }
+    /* If we can convert value to int and back, without loss, try if it is in the Ints */
+    guessed = (QString::number(guess.toInt()) == guess && correctAnswersInts.contains(guess.toInt()))
+    /* Failing that, try if it is in the Strings */
+               || correctAnswersStrings.contains(guess);
 }
-bool Question::guess(int guess)
+void Question::guess(int guess)
 {
-    if (correctAnswersInts.contains(guess)) {
-        guessedRight();
-        return true;
-    } else {
-        guessedWrong();
-        return false;
+    guessed = correctAnswersInts.contains(guess);
+}
+/*
+ * Thin wrapper around guess(QString) -- only needed because this is a slot,
+ * and the best signal we can connect to emits QAbstractButton*
+ */
+void Question::guess(QAbstractButton *button)
+{
+    guess(button->text());
+}
+/**
+ * Match the guess loosely to known answers
+ *
+ * Disregard whitespace, case, and some punctuation
+ */
+void Question::guessLoose(QString guess)
+{
+    QRegExp ignoredCharacters("[ \t-.]");
+
+    foreach(QString s, correctAnswersStrings) {
+        if (guess.toLower().replace(ignoredCharacters, "") == s.toLower().replace(ignoredCharacters, "")) {
+            guessed = true;
+            return;
+        }
     }
+    /* Let guess(QString) handle the eventuality that guess is really an int
+       -- this is inefficient, as it duplicates the matching above */
+    this->guess(guess);
 }
 
-/* Update the widget */
-void Question::guessedRight()
-{
-    // XXX
-}
-
-/* Update the widget */
-void Question::guessedWrong()
-{
-    // XXX
-}
 
 void Question::insertCorrectAnswer(QString value)
 {
@@ -123,8 +127,6 @@ void Question::insertOption(int value)
     optionPoolInts << value;
 }
 
-
-// XXX Should be slot??
 void Question::updateUi()
 {
     /* Nothing to do if we haven't built the UI */
@@ -187,14 +189,26 @@ void Question::buildUi()
             radioButton = new QRadioButton(s);
             buttonGroup->addButton(radioButton);
             myParent->layout()->addWidget(radioButton);
+            connect(buttonGroup, SIGNAL(buttonClicked(QAbstractButton*)), this, SLOT(guess(QAbstractButton*)));
+            connect(buttonGroup, SIGNAL(buttonClicked(QAbstractButton*)), this, SLOT(updateUi()));
         }
     } else if (correctAnswersStrings.isEmpty()) {
         // Integer (with no options) => spinner
         Q_ASSERT(!correctAnswersInts.isEmpty());
-        myParent->layout()->addWidget(new QSpinBox());
+        QSpinBox *spinBox = new QSpinBox;
+        myParent->layout()->addWidget(spinBox);
+        connect(spinBox, SIGNAL(valueChanged(int)), this, SLOT(guess(int)));
+        connect(spinBox, SIGNAL(editingFinished()), this, SLOT(updateUi()));
     } else {
         // String with no options => freeform text input
         Q_ASSERT(!correctAnswersStrings.isEmpty());
-        myParent->layout()->addWidget(new QLineEdit());
+        QLineEdit *lineEdit = new QLineEdit;
+        myParent->layout()->addWidget(lineEdit);
+        if (matchStrict) {
+            connect(lineEdit, SIGNAL(textChanged(QString)), this, SLOT(guess(QString)));
+        } else {
+            connect(lineEdit, SIGNAL(textChanged(QString)), this, SLOT(guessLoose(QString)));
+        }
+        connect(lineEdit, SIGNAL(editingFinished()), this, SLOT(updateUi()));
     }
 }
